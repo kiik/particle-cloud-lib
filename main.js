@@ -83,7 +83,7 @@ function register_middleware(app, prefix) {
   app.use(prefix, set_cors_headers);
 
   app.use(prefix, oauth.authorise());
-  app.use(prefix + '/oauth/token', oauth.grant());
+  app.use('/oauth/token', oauth.grant());
   app.use(prefix, oauth.errorHandler());
 
   //bb.extend(app);
