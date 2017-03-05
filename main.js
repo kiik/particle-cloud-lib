@@ -94,10 +94,11 @@ function register_middleware(app, prefix) {
 module.exports = {
   'register_cloud': function(app) {
 
-    register_middleware(app, '/v1');
-
+    // Add registering endpoint before oauth middleware.
     var UserCreator = require('./lib/UserCreator.js');
     app.post('/v1/users', UserCreator.getMiddleware());
+
+    register_middleware(app, '/v1');
 
     var api = require('./views/api_v1.js');
 
